@@ -1,0 +1,7 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: wannheim
+Source: https://github.com/deadda7a/wannheim
+
+Files: *
+Copyright: 2018 Sebastian Elisa Pfeifer
+License: MIT

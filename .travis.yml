@@ -1,0 +1,19 @@
+before_install:
+  - sudo apt-get install build-essential debhelper dh-make quilt fakeroot lintian
+
+script:
+  - ./build.sh
+
+before_deploy:
+  # Set up git user name and tag this commit
+  - git config --local user.name "Sebastian Elisa Pfeifer"
+  - git config --local user.email "sebastian.pfeifer@unicorncloud.org"
+
+deploy:
+  provider: releases
+  api_key: $APIKEY
+  file_glob: true
+  file: /*.deb
+  skip_cleanup: true
+  on:
+    branch: master

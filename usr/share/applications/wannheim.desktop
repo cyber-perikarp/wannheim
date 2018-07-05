@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Wannheim
+GenericName=Wann heim?
+TryExec=wannheim
+Exec=wannheim
+Terminal=false
+Icon=/usr/share/wannheim/wannheim.png
+Type=Application
+Categories=Application
+Comment=Wann kann ich heim?

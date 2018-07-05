@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+# 2018 Sebastian Elisa Pfeifer <sebastian.pfeifer@unicorncloud.org>
+
+remaining() {
+  time=$1
+  time=$(bc <<< "($time+0.5)/1") # Because fuck floating points in bash
+
+  # Do have have time left or are we doing overtime?
+  if [ $time -gt 0 ]; then
+    echo -e $COLOR_RED
+    prefix='-'
+  else
+    echo -e $COLOR_GREEN
+    time=$(($time*-1))
+    prefix='+'
+  fi
+
+  # How much time is left?
+  hoursLeft=$(($time / 60 / 60))
+  minLeft=$(($time / 60 - $hoursLeft * 60))
+
+  # If under 10, append a zero
+  [ $minLeft -lt 10 ] && minZero='0' || minZero=''
+  [ $hoursLeft -lt 10 ] && hourZero='0' || hourZero=''
+
+  # Generate output string
+  output="${prefix} ${hourZero}${hoursLeft}:${minZero}${minLeft}"
+
+  figlet -W -f big $output
+  echo -e $COLOR_NC
+}
+
+output() {
+  if [ "$1" == "loop" ]; then
+    clear
+  fi
+  echo "Du bist hier seit: $(date -d @$login --rfc-2822)"
+  echo "Du kannst heim um: $(date -d @$logout --rfc-2822)"
+  echo "Es ist jetzt:      $(date --rfc-2822)"
+  remaining $(bc <<< $logout-$(date +%s))
+}
+
+# Define some things
+configFile=~/.wannheim.ini
+today=$(date +"%b %e")
+COLOR_NC='\e[0m'
+COLOR_GREEN='\e[0;32m'
+COLOR_RED='\e[0;31m'
+
+# Copy config file in case it is not here already
+if [ ! -f $configFile ]; then
+    cp /usr/share/wannheim/wannheim.ini $configFile
+fi
+
+# source the config file
+source <(grep = $configFile)
+
+# Get first login of the day
+# in auth.log, the date is padded
+if [ ${today[5]} == ""]; then
+  login=$(date -d "$(grep "session opened for user $(whoami)" /var/log/auth.log | grep "$today" | head -n1 | cut -d' ' -f4)" +%s)
+else
+  login=$(date -d "$(grep "session opened for user $(whoami)" /var/log/auth.log | grep "$today" | head -n1 | cut -d' ' -f3)" +%s)
+fi
+
+# Weekday config
+case "$(date +%A)" in
+  "Monday")
+    weekday=$monday
+  ;;
+  "Tuesday")
+    weekday=$tuesday
+  ;;
+  "Wednesday")
+    weekday=$wednesday
+  ;;
+  "Thursday")
+    weekday=$thursday
+  ;;
+  "Friday")
+    weekday=$friday
+  ;;
+  "Saturday")
+    weekday=$saturday
+  ;;
+  "Sunday")
+    weekday=$sunday
+  ;;
+esac
+
+# Hours to Seconds
+weekday=$(bc <<< $weekday*60*60)
+
+# Calculate logout time
+logout=$(bc <<< $login+$weekday)
+
+output
+
+# If we get parameter loop, loop!
+if [ "$1" == "loop" ]; then
+  while sleep 60; do
+    output
+  done
+fi
