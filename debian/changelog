@@ -1,4 +1,4 @@
-wannheim (1.2.2-1) unstable; urgency=low
+wannheim (1.2.2-2) unstable; urgency=low
 
   * fix date detection
 
@@ -6,7 +6,7 @@ wannheim (1.2.2-1) unstable; urgency=low
 
 wannheim (1.2.2-1) unstable; urgency=low
 
-  * add current time to ouput
+  * add current time to output
 
  -- Sebastian Elisa Pfeifer <sebastian.pfeifer@unicorncloud.org>  Wed, 04 Jul 2018 09:38:45 +0200
 
