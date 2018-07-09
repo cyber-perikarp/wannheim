@@ -1,3 +1,9 @@
+wannheim (1.2.2-3) unstable; urgency=medium
+
+  * fix date detection (again)
+
+ -- Sebastian Elisa Pfeifer <sebastian.pfeifer@unicorncloud.org>  Mon, 09 Jul 2018 13:15:23 +0200
+
 wannheim (1.2.2-2) unstable; urgency=low
 
   * fix date detection
