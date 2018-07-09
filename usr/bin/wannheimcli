@@ -57,7 +57,8 @@ source <(grep = $configFile)
 
 # Get first login of the day
 # in auth.log, the date is padded
-if [ ${today[5]} == ""]; then
+fifth=${today:4:1}
+if [ ! -z "${fifth##*[!0-9]*}" ]; then
   login=$(date -d "$(grep "session opened for user $(whoami)" /var/log/auth.log | grep "$today" | head -n1 | cut -d' ' -f4)" +%s)
 else
   login=$(date -d "$(grep "session opened for user $(whoami)" /var/log/auth.log | grep "$today" | head -n1 | cut -d' ' -f3)" +%s)

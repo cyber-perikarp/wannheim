@@ -1,5 +1,11 @@
 wannheim (1.2.2-1) unstable; urgency=low
 
+  * fix date detection
+
+ -- Sebastian Elisa Pfeifer <sebastian.pfeifer@unicorncloud.org>  Mon, 09 Jul 2018 13:06:07 +0200
+
+wannheim (1.2.2-1) unstable; urgency=low
+
   * add current time to ouput
 
  -- Sebastian Elisa Pfeifer <sebastian.pfeifer@unicorncloud.org>  Wed, 04 Jul 2018 09:38:45 +0200

@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Sebastian Elisa Pfeifer <sebastian.pfeifer@unicorncloud.org>
 
 Package: wannheim
-Version: 1.2.2-1
+Version: 1.2.2-2
 Architecture: all
 Vcs-browser: https://github.com/deadda7a/wannheim
 Depends: rxvt-unicode (>= 9.21-1build1), figlet (>= 2.2.5-2), bash (>= 4.3), bc (>= 1.06.95)
