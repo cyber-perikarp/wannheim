@@ -34,9 +34,9 @@ output() {
   if [ "$1" == "loop" ]; then
     clear
   fi
-  echo "Du bist hier seit: $(date -d @$login --rfc-2822)"
-  echo "Du kannst heim um: $(date -d @$logout --rfc-2822)"
-  echo "Es ist jetzt:      $(date --rfc-2822)"
+  echo "You are here since: $(date -d @$login --rfc-2822)"
+  echo "You can leave at:   $(date -d @$logout --rfc-2822)"
+  echo "Current time is:    $(date --rfc-2822)"
   remaining $(bc <<< $logout-$(date +%s))
 }
 
