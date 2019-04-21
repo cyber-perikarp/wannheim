@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # 2018 Sebastian Elisa Pfeifer <sebastian.pfeifer@unicorncloud.org>
 
-urxvt -bg black -fg white +sb -title "Wann kann ich gehen?" -geometry 50x14 -e wannheimcli loop
+urxvt -bg black -fg white +sb -title "Wann kann ich gehen?" -geometry 51x14 -e wannheimcli loop

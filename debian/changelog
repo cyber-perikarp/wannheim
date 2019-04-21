@@ -1,3 +1,9 @@
+wannheim (1.2.3-1) unstable; urgency=low
+
+  * design change
+
+ -- Sebastian Elisa Pfeifer <sebastian.pfeifer@unicorncloud.org>  Sun, 21.04.2019 20:35:00 +0200
+
 wannheim (1.2.3) unstable; urgency=low
 
   * switch to english
