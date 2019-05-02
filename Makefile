@@ -2,7 +2,7 @@ all:
 	@echo Run \'sudo make install\' to install wannheim.
 
 install:
-	cp usr /
+	cp -r usr /
 
 uninstall:
 	rm /usr/bin/wannheim
